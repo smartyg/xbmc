@@ -89,9 +89,7 @@ $(PLATFORM): $(TARBALLS_LOCATION)/$(ARCHIVE) $(DEPS)
 	rm -rf $(PLATFORM); mkdir -p $(PLATFORM)
 	cd $(PLATFORM); $(ARCHIVE_TOOL) $(ARCHIVE_TOOL_FLAGS) $(TARBALLS_LOCATION)/$(ARCHIVE)
 	cd $(PLATFORM); sed -i".bak" -e "s%pkg_config_default=pkg-config%export PKG_CONFIG_LIBDIR=$(PREFIX)/lib/pkgconfig \&\& pkg_config_default=$(NATIVEPREFIX)/bin/pkg-config%" configure
-<<<<<<< HEAD
 	cd $(PLATFORM); patch -p1 < ../01_fix_ios64_backport.patch
-=======
 	#cd $(PLATFORM); patch -p1 < ../0001-mpeg4video-Signal-unsupported-GMC-with-more-than-one.patch
 	#cd $(PLATFORM); patch -p1 < ../hevcdsp_ARM_NEON_optimized_epel_functions.patch
 	#cd $(PLATFORM); patch -p1 < ../added_ARM_NEON_optimized_SAO_patches.patch
@@ -102,8 +100,6 @@ $(PLATFORM): $(TARBALLS_LOCATION)/$(ARCHIVE) $(DEPS)
 	#cd $(PLATFORM); patch -p1 < ../h264_parser_fix_parsing_of_mvc_slices_in_some_corner_cases.patch
 	cd $(PLATFORM); patch -p1 < ../73fde6f9f3d01f7fc0f3ae4b66f6c725f9fb1105.patch
 	cd $(PLATFORM); patch -p1 < ../0001-ffmpeg-Call-get_format-to-fix-an-issue-with-MMAL-ren.patch
-
->>>>>>> github-desktop-popcornmix/krypton_rbp_backports
 	cd $(PLATFORM);\
 	CFLAGS="$(CFLAGS)" CXXFLAGS="$(CXXFLAGS)" CPPFLAGS="$(CPPFLAGS)" LDFLAGS="$(LDFLAGS)" \
 	./configure $(ffmpg_config)
